@@ -4,13 +4,7 @@ import lombok.Builder;
 
 @Builder(toBuilder = true)
 public class BuilderMember {
-    private Long id;
-    private String name;
-    private String email;
-
-    public BuilderMember(Long id, String name, String email) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-    }
+    private final Long id;
+    private final String name;
+    private final String email;
 }
