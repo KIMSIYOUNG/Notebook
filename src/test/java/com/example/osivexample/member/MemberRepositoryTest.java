@@ -1,37 +1,51 @@
 package com.example.osivexample.member;
 
-import static org.junit.jupiter.api.Assertions.*;
+import javax.persistence.EntityManager;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
 class MemberRepositoryTest {
     @Autowired
     MemberRepository memberRepository;
 
+    @Autowired
+    PostRepsoitory postRepsoitory;
+
+    @Autowired
+    EntityManager em;
+
     @Test
-    @DirtiesContext
     void member() {
         memberRepository.save(new Member());
     }
 
+    @Transactional
     @Test
-    @DirtiesContext
     void member2() {
-        memberRepository.save(new Member());
+        Member save = memberRepository.save(new Member());
+        Post post = new Post();
+        post.setMember(save);
+        Post saved = postRepsoitory.save(post);
+
+        em.flush();
+        em.clear();
+
+        Post findPost = postRepsoitory.findById(saved.getId()).get();
+        Member findMember = memberRepository.findById(save.getId()).get();
+
+        System.out.println("hello");
     }
 
     @Test
-    @DirtiesContext
     void member3() {
         memberRepository.save(new Member());
     }
 
     @Test
-    @DirtiesContext
     void member4() {
         memberRepository.save(new Member());
     }

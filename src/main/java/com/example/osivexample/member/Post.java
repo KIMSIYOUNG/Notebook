@@ -18,7 +18,7 @@ public class Post {
 
     private String content;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
 
     public void setMember(Member member) {
