@@ -16,7 +16,16 @@ public class OrderService {
         ParticipantLink stockLink = reduceStock(order);
         ParticipantLink paymentLink = payOrder(order);
 
-        tccRestAdapter.confirmAll(stockLink.getUri(), paymentLink.getUri());
+        if (validate(stockLink, paymentLink)) {
+            tccRestAdapter.confirmAll(stockLink.getUri(), paymentLink.getUri());
+        } else {
+            tccRestAdapter.cancelAll(stockLink.getUri(), paymentLink.getUri());
+        }
+    }
+
+    private boolean validate(ParticipantLink stockLink, ParticipantLink paymentLink) {
+        // some logic
+        return true;
     }
 
     private ParticipantLink reduceStock(Order order) {

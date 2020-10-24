@@ -33,4 +33,11 @@ public class StockService {
         reservedStock.changeStatus(Status.CONFIRMED);
         reservedStockRepository.save(reservedStock);
     }
+
+    @Transactional
+    public void cancelStock(Long id) {
+        ReservedStock stock = reservedStockRepository.findById(id)
+            .orElseThrow(IllegalArgumentException::new);
+        stock.changeStatus(Status.CANCEL);
+    }
 }

@@ -1,5 +1,5 @@
 package com.example.stock;
 
 public enum Status {
-    REDUCE, PLUS, CONFIRMED
+    REDUCE, PLUS, CONFIRMED, CANCEL
 }

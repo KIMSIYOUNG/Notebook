@@ -39,4 +39,14 @@ public class TccRestAdapter {
             }
         });
     }
+
+    public void cancelAll(URI... uris) {
+        Arrays .stream(uris).forEachOrdered(participantLink -> {
+            try {
+                restTemplate.delete(participantLink);
+            } catch (RestClientException e) {
+                throw new RuntimeException();
+            }
+        });
+    }
 }
