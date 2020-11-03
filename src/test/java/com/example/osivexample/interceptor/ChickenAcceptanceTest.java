@@ -1,8 +1,11 @@
 package com.example.osivexample.interceptor;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+import java.math.BigDecimal;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +22,6 @@ class ChickenAcceptanceTest {
 
     @Test
     void update() throws Exception {
-
         mockMvc.perform(put("/chicken")
             .header("id", 1L)
             .accept(MediaType.APPLICATION_JSON)
