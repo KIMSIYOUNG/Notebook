@@ -1,12 +1,13 @@
-package com.example.osivexample;
+package com.example.immutabledto;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OsivExampleApplication {
+public class ImmutableDtoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(OsivExampleApplication.class, args);
+        SpringApplication.run(ImmutableDtoApplication.class, args);
     }
+
 }
